@@ -1,4 +1,4 @@
-<?php 
+<?php
 $ppath = "http://".$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 ?><html>
 <head>
@@ -42,9 +42,9 @@ foreach($clean as $fil)
 {
 	if( ($cell % 4) == 0)
 	{print "<tr>\n";}
-	
+
 	print "<td align=\"center\" valign=\"top\"><div>";
-	
+
 	$data = getimagesize($fil);
 	$rat = ($data[0]/$data[1]);
 		//echo "data=/".$data[0]."&times;".$data[1]."/<br>";
@@ -60,7 +60,7 @@ foreach($clean as $fil)
 	{
 		$w = $data[0];
 	}
-	
+
 	if($h < $minh)
 	{
 		$h = $minh;
@@ -69,16 +69,16 @@ foreach($clean as $fil)
 	}
 	else
 	{
-	
+
 	}
-	
+
 	//get some info prepared for use
 	$fulfil = ($ppath.$fil);
 	$sz = size_readable (filesize($fil));
-	
+
 	//print the name at the top
 	print "<span class=\"fil\">$fil</span><br>\n";
-	
+
 	//*****not modded  WxH****
 	print "<span class=\"siz\">{$data[0]}&times;{$data[1]}</span><br>\n";
 	//print $sz . "<br>\n";
@@ -89,14 +89,14 @@ foreach($clean as $fil)
 	print 'link <input type=text value="'."<a href='{$fulfil}'>text</a>".'" size=10 class="lnkbox">'."<br>\n";
 	print "img <input type=text value=\"<img src='{$fulfil}'>\" size=10 class=\"lnkbox\"><br>\n";
 
-	print "<br>\n";	
+	print "<br>\n";
 	//make the image (downscaled) and link it to the real image
 	print "<a href=\"$fulfil\" alt=\"link to image:{$fil}\" title=\"f:{$fil} s:{$sz}\" \"><img border=0 src=\"$fil\" width=\"{$w}px\" height=\"{$h}px\"></a>" . "<br>\n";
 
-	
+
 	print "</td>";
 
-	
+
 	if(($cell % 4) == ($perrow-1))
 	{ print "</tr>\n"; }
 	$cell++;
@@ -124,10 +124,10 @@ function filter($raw, $output=0)
 	global $passc;
 	global $passc;
 	global $failc;
-	
+
 	//list of crap to NOT display
 	$vorbotten = array("*.php");
-	
+
 	foreach($raw as $index=>$f)
 	{
 		foreach($vorbotten as $BAN)
@@ -142,7 +142,7 @@ function filter($raw, $output=0)
 		}
 	}
 
-	
+
 	$ext = array("jpg", "jpeg", "gif", "png");
 	foreach($raw as $f)
 	{
@@ -162,7 +162,7 @@ function filter($raw, $output=0)
 				//code used to be here, but now its not, so carry on
 			}
 		}
-		
+
 		if($dump)
 		{
 			if($output){print c("red","fail?") . " [$f]<br>\n";}
@@ -173,16 +173,16 @@ function filter($raw, $output=0)
 }
 
 function size_readable ($size, $retstring = null) {
-        // adapted from code at http://aidanlister.com/repos/v/function.size_readable.php
-        $sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-        if ($retstring === null) { $retstring = '%01.2f %s'; }
-        $lastsizestring = end($sizes);
-        foreach ($sizes as $sizestring) {
-                if ($size < 1024) { break; }
-                if ($sizestring != $lastsizestring) { $size /= 1024; }
-        }
-        if ($sizestring == $sizes[0]) { $retstring = '%01d %s'; } // Bytes aren't normally fractional
-        return sprintf($retstring, $size, $sizestring);
+	// adapted from code at http://aidanlister.com/repos/v/function.size_readable.php
+	$sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+	if ($retstring === null) { $retstring = '%01.2f %s'; }
+	$lastsizestring = end($sizes);
+	foreach ($sizes as $sizestring) {
+		if ($size < 1024) { break; }
+		if ($sizestring != $lastsizestring) { $size /= 1024; }
+	}
+	if ($sizestring == $sizes[0]) { $retstring = '%01d %s'; } // Bytes aren't normally fractional
+	return sprintf($retstring, $size, $sizestring);
 }
 /***********************end func*****************************/
 ?>
