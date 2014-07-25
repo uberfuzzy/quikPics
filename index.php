@@ -6,9 +6,9 @@ $ppath = "http://".$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 <title>ubrfzy's quick image linker</title>
 <style>
 body { color: white; background: black; }
-input.lnkbox { padding: 0px 0px 0px 10px; font-size: 10px; }
 span.fil {}
 span.siz, input.lnkbox { font-family: monospace; font-size: 12px; }
+label[for] { cursor: pointer; margin-right: 5px;}
 </style>
 </head>
 <body>
@@ -42,7 +42,6 @@ if($passc == 0) {
 		}
 
 		print "<td align=\"center\" valign=\"top\"><div>";
-
 		$data = getimagesize($fil);
 		$rat = ($data[0]/$data[1]);
 			//echo "data=/".$data[0]."&times;".$data[1]."/<br>";
@@ -79,9 +78,19 @@ if($passc == 0) {
 
 		print "</div>\n";
 
-		print "raw <input type=text value=\"".$fulfil."\" size=10 class=\"lnkbox\"><br>\n";
-		print 'link <input type=text value="'."<a href='{$fulfil}'>text</a>".'" size=10 class="lnkbox">'."<br>\n";
-		print "img <input type=text value=\"<img src='{$fulfil}'>\" size=10 class=\"lnkbox\"><br>\n";
+		print "<div>\n";
+		print "<label for='raw{$cell}' title='click to select box for copy' onclick=\"document.getElementById('raw{$cell}').select();\">raw</label>\n";
+		$value = $fulfil;
+		print "<input type=text id='raw{$cell}' value=\"{$value}\" title=\"{$value}\" size=6 class='lnkbox' readonly ><br>\n";
+
+		print "<label for='link{$cell}' title='click to select box for copy' onclick=\"document.getElementById('link{$cell}').select();\">link</label>\n";
+		$value = "<a href='{$fulfil}'>text</a>";
+		print "<input type=text id='link{$cell}' value=\"{$value}\" title=\"{$value}\" size=6 class='lnkbox' readonly ><br>\n";
+
+		print "<label for='img{$cell}' title='click to select box for copy' onclick=\"document.getElementById('img{$cell}').select();\">img</label>\n";
+		$value = "<img src='{$fulfil}'>";
+		print "<input type=text id='img{$cell}' value=\"{$value}\" title=\"{$value}\" size=6 class='lnkbox' readonly ><br>\n";
+		print "</div>\n";
 
 		print "<br>\n";
 		# make the image (downscaled) and link it to the real image
