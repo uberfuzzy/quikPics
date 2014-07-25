@@ -37,7 +37,7 @@ if($passc == 0) {
 
 	$cell = 0;
 	foreach( $clean as $fil ) {
-		if( ($cell % 4) == 0 ) {
+		if( ($cell % $perrow) == 0 ) {
 			print "<tr>\n";
 		}
 
@@ -89,8 +89,8 @@ if($passc == 0) {
 
 		print "</td>";
 
-		if( ($cell % 4) == ($perrow-1) ) {
-			print "</tr>\n";
+		if( ($cell % $perrow) == ($perrow-1) ) {
+			print "</tr>\n\n";
 		}
 		$cell++;
 	}
