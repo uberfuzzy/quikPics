@@ -21,7 +21,7 @@ $minh = 50;
 
 $raw = glob("*.*");
 
-$clean = filter($raw, (( isset($_GET['verbose']) )?(1):(0)) );
+$clean = filterFiles($raw);
 unset($raw);
 
 print "<br>\n";
@@ -104,10 +104,8 @@ if($passc == 0) {
 		$cell++;
 	}
 
-
 	print "</table>\n";
 	#************************ END MAIN LOGIC*********************
-
 }
 
 ?>
@@ -119,11 +117,7 @@ if($passc == 0) {
 </body></html>
 <?php
 #*************************FUNC********************************
-function c($c,$t) {
-	return "<font color=\"$c\">$t</font>";
-}
-
-function filter($raw, $output=0) {
+function filterFiles($raw) {
 	global $passc;
 	global $passc;
 	global $failc;
@@ -136,9 +130,6 @@ function filter($raw, $output=0) {
 		foreach( $vorbotten as $BAN ) {
 			if( fnmatch($BAN, $f) ) {
 				$banc++;
-				if( $output ) {
-					print c('yellow','BAN')." [$BAN][$f]<br>\n";
-				}
 				unset($raw[$index]);
 				continue 2;
 			}
@@ -153,7 +144,6 @@ function filter($raw, $output=0) {
 				$dump = false;
 				$clean[] = $f;
 				$passc++;
-				if($output){print c('lime','pass')." [$e][$f]<br>\n";}
 				continue 2;
 			} else {
 				#code used to be here, but now its not, so carry on
@@ -161,9 +151,6 @@ function filter($raw, $output=0) {
 		}
 
 		if( $dump ) {
-			if( $output ) {
-				print c("red","fail?") . " [$f]<br>\n";
-			}
 			$failc++;
 		}
 	}
