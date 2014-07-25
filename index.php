@@ -85,7 +85,7 @@ if($passc == 0) {
 
 		print "<br>\n";
 		# make the image (downscaled) and link it to the real image
-		print "<a href=\"$fulfil\" alt=\"link to image:{$fil}\" title=\"f:{$fil} s:{$sz}\" \"><img border=0 src=\"$fil\" width=\"{$w}px\" height=\"{$h}px\"></a>" . "<br>\n";
+		print "<a href=\"$fulfil\" alt=\"link to image:{$fil}\" title=\"f:{$fil} s:{$sz}\" \"><img border=0 src=\"$fil\" width=\"{$w}\" height=\"{$h}\"></a>" . "<br>\n";
 
 		print "</td>";
 
