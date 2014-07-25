@@ -117,6 +117,7 @@ function filter($raw, $output=0) {
 	global $passc;
 	global $passc;
 	global $failc;
+	global $banc;
 
 	#list of crap to NOT display
 	$vorbotten = array("*.php");
