@@ -112,11 +112,12 @@ if($passc == 0) {
 
 ?>
 <hr width="25%">
-<center><small style="color: #4f4f4f; font-family: Verdana;">
-<?php print " pass:[{$passc}] fail:[{$failc}] " .(($banc>0)?("ban: {$banc}"):("")) ."\n"; ?><br>
+<center><small style="color: rgba(50%, 50%, 50%, 0.1); font-family: san-serif;">
 &copy; 2007-2014 c. 'uberfuzzy' stafford<br>
 </small></center>
-</body><?php
+<!-- <?php print " pass:[{$passc}] fail:[{$failc}] " .(($banc>0)?("ban: {$banc}"):("")) ."\n"; ?> -->
+</body></html>
+<?php
 #*************************FUNC********************************
 function c($c,$t) {
 	return "<font color=\"$c\">$t</font>";
